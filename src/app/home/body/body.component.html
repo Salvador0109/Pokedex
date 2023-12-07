@@ -1,20 +1,8 @@
-<div class="flex h-fit w-full bg-blue-200">
-    <!-- <app-card>
+<div class="flex flex-wrap justify-center">
 
-    </app-card> -->
-
-<div class="flex flex-wrap gap-10 w-full">
-    
     @for (item of pokemon; track item.id) {
-        <!-- <div class="grow">
-            <span>{{item.name}}</span>
-            <span>{{item.position}}</span>
-            <img src={{item.image}} alt="">
-        </div> -->
-        <div class="grow">
-            <app-card></app-card>
+        <div class="w-fit m-12">
+            <app-card [name]="item.name" [image]="item.image" [number]="item.position" [types]="item.types"></app-card>
         </div>
     }
-
-</div>
 </div>

@@ -33,12 +33,22 @@ export class BodyComponent implements OnInit{
     for(let i=1; i<10; i++){
       this.api.getPokemons(i).subscribe({
         next: (result)=>{
-          console.log(result);
+          console.log("r: ",result);
+          //Se crea un arreglo types
+          let types: string[]=[];
+
+          //Se va iterando el types de la llamada a la api
+          //se hace un push al types definido anteriormente por cada type.name que encuentre
+          result.types.forEach((type:any) => {
+            types.push(type.type.name);
+          })
+
           let pokeData = {
             id: result.id,
             position: result.order,
             name: result.name,
-            image: result.sprites.other.dream_world.front_default
+            image: result.sprites.other.dream_world.front_default,
+            types: types
           }
 
           this.pokemon[counter] = pokeData;
@@ -49,6 +59,6 @@ export class BodyComponent implements OnInit{
         }
       });
     }
-console.log(this.pokemon);
+// console.log(this.pokemon);
   }
 }
