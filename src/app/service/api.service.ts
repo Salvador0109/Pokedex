@@ -20,6 +20,6 @@ export class ApiService {
 
 
   public getPokemon(name:string) : Observable<any>{
-    return this.http.get<any>(this.apiUrl+"/pokemon/"+name);
+    return this.http.get<any>(this.apiUrl+"/pokemon/"+name.toLowerCase());
   }
 }

@@ -1,5 +1,5 @@
 <div>
-    <app-header></app-header>
-    <app-body></app-body>
+    <app-header (pokeNameEvent)="searchPokemon($event)"></app-header>
+    <app-body [searchPokemonInput]="pokeSearch"></app-body>
 </div>
 

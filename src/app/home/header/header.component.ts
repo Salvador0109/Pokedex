@@ -13,6 +13,14 @@ export class HeaderComponent {
   @Output () pokeNameEvent = new EventEmitter<string>();
 
   search(){
+    console.log("pokeSearch en header: ", this.pokeSearch);
     this.pokeNameEvent.emit(this.pokeSearch);
   }
+
+  // onSearchPokemon(event:string){
+  //   this.pokeSearch = event;
+  //   this.pokeNameEvent.emit(this.pokeSearch);
+  // }
+
+
 }

@@ -1,8 +1,17 @@
 <div class="flex flex-wrap justify-center">
 
-    @for (item of pokemon; track item.id) {
+    @if (searchPokemonInput) {
+        @for (item of pokemon; track item.id) {
+            <div class="w-fit m-12">
+                <app-card [name]="item.name" [image]="item.image" [number]="item.position" [types]="item.types"></app-card>
+            </div>
+        }
+    } @else {
+            @for (item of pokemon; track item.id) {
         <div class="w-fit m-12">
             <app-card [name]="item.name" [image]="item.image" [number]="item.position" [types]="item.types"></app-card>
         </div>
     }
+    }
+
 </div>

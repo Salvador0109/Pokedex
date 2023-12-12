@@ -10,5 +10,10 @@ import { BodyComponent } from './body/body.component';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  public pokeSearch! : string;
+
+  searchPokemon(pokemon: string){
+    this.pokeSearch = pokemon;
+  }
 
 }
