@@ -17,4 +17,9 @@ export class ApiService {
     // console.log("getPokemons: "+ this.apiUrl+"/pokemon");
     return this.http.get<any>(this.apiUrl+"/pokemon/"+index);
   }
+
+
+  public getPokemon(name:string) : Observable<any>{
+    return this.http.get<any>(this.apiUrl+"/pokemon/"+name);
+  }
 }

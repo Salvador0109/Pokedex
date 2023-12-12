@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from '../../service/api.service';
-import { forkJoin } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-body',
   standalone: true,
-  imports: [CardComponent, HttpClientModule],
+  imports: [CardComponent, HttpClientModule, FormsModule],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css'
 })
@@ -16,7 +16,8 @@ import { forkJoin } from 'rxjs';
 export class BodyComponent implements OnInit{
   public pokemon:any[]=[];
   public data: any[]=[];
-
+  public pokeSearch! : string;
+  @Input() searchPokemonInput!: string;
 
   constructor(
     private api : ApiService
@@ -33,7 +34,7 @@ export class BodyComponent implements OnInit{
     for(let i=1; i<10; i++){
       this.api.getPokemons(i).subscribe({
         next: (result)=>{
-          console.log("r: ",result);
+          // console.log("r: ",result);
           //Se crea un arreglo types
           let types: string[]=[];
 
@@ -61,4 +62,6 @@ export class BodyComponent implements OnInit{
     }
 // console.log(this.pokemon);
   }
+
+
 }

@@ -1,10 +1,13 @@
     <div class="relative flex items-center w-full h-32">
+        <!-- Imagen (Logo) -->
         <div class="absolute left-0">
             <img class="w-1/5" src="https://cdn.icon-icons.com/icons2/851/PNG/512/Pokedex_tool_icon-icons.com_67529.png" alt="Pokedex">
         </div>
     
-        <div class="absolute right-0 space-x-2">
-            <input type="text" class="inline-block w-3/5 border border-gray-600 text-black rounded-lg" placeholder="Buscar" >
-            <button type="submit" class="inline-block w-2/6 bg-green-500 p-1 rounded-lg hover:bg-green-600 text-sm">Search</button>
+        <!-- Busqueda -->
+        <div class="absolute right-0 w-1/2">
+            <input type="text" class=" w-3/4 p-4 border border-gray-600 text-black rounded-lg" placeholder="Buscar pokemon..." [(ngModel)]="pokeSearch">
+            <!-- <button type="button" class="inline-block w-1/6 p-4 bg-green-500 rounded-lg hover:bg-green-600 text-sm" (click)="search()">Search</button> -->
         </div>
+
     </div>

@@ -2,3 +2,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components{
+    .grass{
+        @apply bg-cyan-700;
+    }
+}
+
+.grass{
+    --tw-bg-opacity: 1;
+    background-color: rgb(21 128 61 / var(--tw-bg-opacity));
+}
+
+
+.fire{
+    --tw-bg-opacity: 1;
+    background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+
+.water{
+    --tw-bg-opacity: 1;
+    background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+
+.poison{
+    --tw-bg-opacity: 1;
+    background-color: rgb(126 34 206 / var(--tw-bg-opacity));
+}
+
+.flying{
+    --tw-bg-opacity: 1;
+    background-color: rgb(14 116 144 / var(--tw-bg-opacity));
+}
+
+.custom-text{
+    color: white;
+    -webkit-text-stroke: 1.5px rgb(0, 0, 0); 
+}

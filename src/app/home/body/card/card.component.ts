@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -8,23 +8,41 @@ import { Component, Input, ViewChild } from '@angular/core';
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
-export class CardComponent {
+export class CardComponent implements OnChanges, OnInit{
+
+
+  
   @Input() name!: string;
   @Input() image!: string;
   @Input() number!: number;
   @Input() types: string[]=[];
-  
-  
-  getColor(type:string):string{
-    console.log("getColors: ", this.types);
-    
-    switch(this.types[0]){
-      case 'FIRE':
-        return 'bg-red-400';
-      case 'water':
-        return 'bg-cyan-400';
-        default:
-          return 'bg-gray-300';
+  public colorType0: string="";
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['types'] && changes['types'].currentValue){
+      console.log("Dentro del if... ", changes['types'])
+      this.getColor(this.types[0]);
+    }
+  }
+  ngOnInit(): void {
+    this.getColor(this.types[0]);
+  }
+
+
+  getColor(type:string){
+
+    switch(type){
+      case 'fire':
+        this.colorType0='bg-red-400';
+        break;
+
+      case 'grass':
+        this.colorType0='bg-green-400';
+        break;
+
+        case 'water':
+          this.colorType0='bg-cyan-400';
+          break;
       }
     }
 }
