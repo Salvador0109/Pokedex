@@ -1,17 +1,24 @@
 <div class="flex flex-wrap justify-center">
 
+    <!-- Enlistado de pokemon a buscar -->
     @if (searchPokemonInput) {
         @for (item of pokemon; track item.id) {
-            <div class="w-fit m-12">
+            <div class="w-fit m-10">
                 <app-card [name]="item.name" [image]="item.image" [number]="item.position" [types]="item.types"></app-card>
             </div>
         }
+    <!-- Enlistado de todos los pokemon -->
     } @else {
             @for (item of pokemon; track item.id) {
-        <div class="w-fit m-12">
+        <div class="w-fit m-12" (click)="openModal(item.name)">
             <app-card [name]="item.name" [image]="item.image" [number]="item.position" [types]="item.types"></app-card>
         </div>
     }
+    }
+
+    @if(detailPokemonBnd){
+        <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50"></div>
+        <app-detail-pokemon (modal)="detailPokemonBnd = false" [pokemonDetail]="pokemonDetailName"></app-detail-pokemon>
     }
 
 </div>

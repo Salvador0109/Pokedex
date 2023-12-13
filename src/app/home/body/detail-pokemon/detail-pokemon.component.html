@@ -1,0 +1,35 @@
+<!-- Contenedor modal -->
+<div class="fixed left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 h-3/4 w-2/4 bg-white z-50 p-10 rounded-2xl">
+
+    <!-- Icono X para cerrar modal -->
+    <div class="relative left-full mr-10 z-50" (click)="closeModal()">
+        <i class="fa-solid fa-xmark fa-xl hover:text-red-600 cursor-pointer"></i>
+    </div>
+
+<!-- Contenedor  -->
+<div class="relative w-full h-full flex justify-center items-center">
+
+    <!-- Titulo -->
+    <div class=" absolute w-fit top-0 z-50 text-black text-5xl font-bold uppercase text-custom-font">
+        <span>{{pokemonDetail}}</span>
+
+    </div>
+
+    <hr class="absolute top-14 my-5 border-t w-full border-gray-300">
+
+
+    
+<!-- Imagen -->
+    <div class="absolute h-96 left-0 ">
+        <img src={{pokeImg}} alt="" class="h-full">
+    </div>
+
+    <!-- Información -->
+    <div class="absolute right-0 w-1/2 h-96 ">
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem perferendis odit voluptatem dolore itaque, ad animi cumque molestiae deserunt id obcaecati libero vitae, repellendus fugiat! Odio nam accusantium dolorem esse.</span>
+    </div>
+
+</div>
+
+
+</div>

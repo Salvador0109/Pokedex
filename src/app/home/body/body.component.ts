@@ -3,12 +3,13 @@ import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from '../../service/api.service';
 import { FormsModule } from '@angular/forms';
+import { DetailPokemonComponent } from './detail-pokemon/detail-pokemon.component';
 
 
 @Component({
   selector: 'app-body',
   standalone: true,
-  imports: [CardComponent, HttpClientModule, FormsModule],
+  imports: [CardComponent, HttpClientModule, FormsModule, DetailPokemonComponent],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css'
 })
@@ -17,6 +18,8 @@ export class BodyComponent implements OnInit, OnChanges{
   public pokemon:any[]=[];
   public data: any[]=[];
   public pokeSearch! : string;
+  public detailPokemonBnd! : boolean;
+  public pokemonDetailName! : string;
   @Input() searchPokemonInput!: string;
 
   constructor(
@@ -81,8 +84,6 @@ export class BodyComponent implements OnInit, OnChanges{
     let counter = 0;
     this.api.getPokemon(this.searchPokemonInput).subscribe({
       next:(result)=>{
-        console.log("poke encontrado");
-                  // console.log("r: ",result);
           //Se crea un arreglo types
           let types: string[]=[];
 
@@ -106,6 +107,13 @@ export class BodyComponent implements OnInit, OnChanges{
         console.log("poke no encontrado...", error);
       }
     })
+  }
+
+
+
+  openModal(pokeDetail:string){
+    this.detailPokemonBnd = true;
+    this.pokemonDetailName = pokeDetail;
   }
 
 

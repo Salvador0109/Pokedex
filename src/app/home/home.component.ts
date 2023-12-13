@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
+import { AsideComponent } from './body/filters/filters.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, BodyComponent],
+  imports: [HeaderComponent, BodyComponent, AsideComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
