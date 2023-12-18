@@ -1,6 +1,7 @@
 <div>
     <app-header (pokeNameEvent)="searchPokemon($event)"></app-header>
-    <app-filters></app-filters>
-    <app-body [searchPokemonInput]="pokeSearch"></app-body>
+    <app-filters (pokeFilterEvent)="filterPokemon($event)" (pokeFilterEventBnd)="filterPokemonBnd($event)"></app-filters>
+    <app-body [searchPokemonInput]="pokeSearch" [filterPokemonInput]="pokeFilter" [filterPokemonInputBnd]="pokeFilterBnd" ></app-body>
+
 </div>
 

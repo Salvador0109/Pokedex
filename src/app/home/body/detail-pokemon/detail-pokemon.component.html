@@ -19,14 +19,38 @@
 
 
     
-<!-- Imagen -->
-    <div class="absolute h-96 left-0 ">
-        <img src={{pokeImg}} alt="" class="h-full">
+<!-- Imagen y tipos-->
+    <div class="absolute left-0 w-1/2 h-96 flex flex-col items-center">
+        <img src={{pokeImg}} alt="" class="h-full object-cover">
+        
+        <!-- <div class="absolute bottom-0 w-fit h-fit space-x-5 text-white">
+            
+            <span class="{{pokeTypes[0]}} py-2 px-6 rounded-3xl font-bold text-3xl">{{pokeTypes[0]}}</span>
+            
+            @if (pokeTypes[1]) {
+                <span class="{{pokeTypes[1]}} py-2 px-6 rounded-3xl font-bold text-3xl">{{pokeTypes[1]}}</span>
+            }
+
+        </div> -->
+
     </div>
 
     <!-- Información -->
-    <div class="absolute right-0 w-1/2 h-96 ">
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem perferendis odit voluptatem dolore itaque, ad animi cumque molestiae deserunt id obcaecati libero vitae, repellendus fugiat! Odio nam accusantium dolorem esse.</span>
+    <div class="absolute right-0 w-1/3 h-fit flex flex-col gap-4">
+        <span>Weight: {{pokeWeight}}</span>  
+        <span>Height: {{pokeHeight}}</span>
+        <span>Stats: </span>
+        <div class="flex flex-row gap-3">
+            <label for="">{{pokeStatName.toUpperCase()}}</label>
+
+                <div class="relative bg-gray-300 w-full h-5 rounded-xl">
+                    <div class="absolute bg-cyan-500 h-5 w-1/4 rounded-lg"></div>
+                </div>
+
+                <label for="">{{pokeStatNumber}}%</label>
+        </div>
+ 
+
     </div>
 
 </div>

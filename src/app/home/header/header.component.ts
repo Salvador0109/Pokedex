@@ -17,10 +17,4 @@ export class HeaderComponent {
     this.pokeNameEvent.emit(this.pokeSearch);
   }
 
-  // onSearchPokemon(event:string){
-  //   this.pokeSearch = event;
-  //   this.pokeNameEvent.emit(this.pokeSearch);
-  // }
-
-
 }

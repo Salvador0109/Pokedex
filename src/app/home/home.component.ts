@@ -12,9 +12,19 @@ import { AsideComponent } from './body/filters/filters.component';
 })
 export class HomeComponent {
   public pokeSearch! : string;
+  public pokeFilter: any[] =[];
+  public pokeFilterBnd!: boolean;
 
   searchPokemon(pokemon: string){
     this.pokeSearch = pokemon;
+  }
+
+  filterPokemon(filterPoke: string[]){
+    this.pokeFilter = filterPoke;
+  }
+
+  filterPokemonBnd(filterPokeBnd: boolean){
+    this.pokeFilterBnd = filterPokeBnd;
   }
 
 }

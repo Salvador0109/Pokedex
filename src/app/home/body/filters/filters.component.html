@@ -1,8 +1,6 @@
-<div class="w-full p-5 bg-gray-300 rounded-2xl">
-    <input type="checkbox" name="fire" id="fire">
-    <label for="">Fire</label>
-
-    <input type="checkbox" name="grass" id="grass">
-    <label for="">Grass</label>
+<div class="flex justify-center gap-10 w-full p-5 bg-gray-300 rounded-2xl">
+    <button [class.grass]="grassClic" [class.bg-white]="!grassClic" (click)="toggleFondo('grass')" class="py-2 px-6 rounded-2xl text-3xl uppercase transition-colors duration-300"> Grass </button>
+    <button [class.fire]="fuegoClic" [class.bg-white]="!fuegoClic" (click)="toggleFondo('fire')" class="py-2 px-6 rounded-2xl text-3xl uppercase transition-colors duration-300"> Fire </button>
+    <button [class.water]="waterClic" [class.bg-white]="!waterClic" (click)="toggleFondo('water')" class="py-2 px-6 rounded-2xl text-3xl uppercase transition-colors duration-300"> Water </button>
 
 </div>
