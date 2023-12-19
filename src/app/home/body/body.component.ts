@@ -5,6 +5,7 @@ import { ApiService } from '../../service/api.service';
 import { FormsModule } from '@angular/forms';
 import { DetailPokemonComponent } from './detail-pokemon/detail-pokemon.component';
 import { CommonModule } from '@angular/common';
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -60,45 +61,77 @@ export class BodyComponent implements OnInit, OnChanges{
       this.listPokes();
   }
 
-  public listPokes(){
+//   public listPokes(){
 
-    this.search = false;
-    this.filter = false;
-    console.log("Entro a listPokes...");
-    let counter = 0;
+//     this.search = false;
+//     this.filter = false;
+//     console.log("Entro a listPokes...");
+//     let counter = 0;
 
-    for(let i=1; i<10; i++){
-      this.api.getPokemons(i).subscribe({
-        next: (result)=>{
-          // console.log("r: ",result);
-          //Se crea un arreglo types
-          let types: string[]=[];
+//     for(let i=1; i<10; i++){
+//       this.api.getPokemons(i).subscribe({
+//         next: (result)=>{
+//           // console.log("r: ",result);
+//           //Se crea un arreglo types
+//           let types: string[]=[];
 
-          //Se va iterando el types de la llamada a la api
-          //se hace un push al types definido anteriormente por cada type.name que encuentre
-          result.types.forEach((type:any) => {
-            types.push(type.type.name);
-          })
+//           //Se va iterando el types de la llamada a la api
+//           //se hace un push al types definido anteriormente por cada type.name que encuentre
+//           result.types.forEach((type:any) => {
+//             types.push(type.type.name);
+//           })
 
-          let pokeData = {
-            id: result.id,
-            position: result.order,
-            name: result.name,
-            image: result.sprites.other.dream_world.front_default,
-            types: types
-          }
+//           let pokeData = {
+//             id: result.id,
+//             position: result.order,
+//             name: result.name,
+//             image: result.sprites.other.dream_world.front_default,
+//             types: types
+//           }
 
-          this.pokemon[counter] = pokeData;
-          counter++;
+//           this.pokemon[counter] = pokeData;
+//           counter++;
 
-        }, error: (error)=>{
-          console.log("error: ", error);
-        }
+//         }, error: (error)=>{
+//           console.log("error: ", error);
+//         }
+//       });
+//     }
+// console.log(this.pokemon);
+// }
+
+public listPokes(){
+  this.search = false;
+  this.filter = false;
+  console.log("Entro a listPokes...");
+
+  // Guardar las peticiones en arreglo requests.
+  const requests = [];
+  for(let i = 1; i<10; i++){
+    requests.push(this.api.getPokemons(i));
+  }
+
+  // Suscribirnos utilizando forkJoin
+  forkJoin(requests).subscribe({
+    next: (results:any[])=>{
+      let counter = 0;
+      results.forEach(result =>{
+        let types: string[] = result.types.map((type:any) => type.type.name);
+        let pokeData = {
+          id: result.id,
+          position: result.order,
+          name: result.name,
+          image: result.sprites.other.dream_world.front_default,
+          types: types
+        };
+        this.pokemon[counter++] = pokeData;
       });
+    },
+    error:(error)=>{
+      console.log("Error: ", error);
     }
-console.log(this.pokemon);
+  })
 }
-
 
   public listPokesToSearch(){
     this.search = true;
